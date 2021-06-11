@@ -9,7 +9,7 @@ use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Query;
 
-class JobQuery extends Query
+class JobQuery extends AuthorizeQueries
 {
     protected $attributes = [
         'name' => 'job',
