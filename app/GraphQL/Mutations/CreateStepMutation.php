@@ -6,7 +6,7 @@ namespace App\GraphQL\Mutations;
 
 use App\Models\Jobs;
 use Closure;
-use Doctrine\DBAL\Query\QueryException;
+use GraphQL\Exception\InvalidArgument;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Illuminate\Support\Facades\Auth;
@@ -61,15 +61,14 @@ class CreateStepMutation extends AuthorizeMutation
         $job = Jobs::find($args['jobs_id']);
 
         if (!$job) {
-            throw new QueryException("Geçersiz job id!");
+            throw new InvalidArgument("Geçersiz job id!");
         }
 
-        if ($job->users()->contains(Auth::id())) {
-            throw new QueryException("Erişiminiz bulunmuyor!");
+        if (!$job->users->contains(Auth::id())) {
+            throw new InvalidArgument("Erişiminiz bulunmuyor!");
         }
 
-
-
+        $args['user_id'] = Auth::id();
         return $job->steps()->create($args);
     }
 }
