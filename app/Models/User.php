@@ -60,6 +60,22 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * @param $value
+     */
+    public function setPasswordAttribute($value)
+    {
+        if (!isset($value) || empty($value)) {
+            unset($this->attributes['password']);
+            return false;
+        }
+
+        if (\Hash::needsRehash($value)) {
+            $value = \Hash::make($value);
+        }
+        $this->attributes['password'] = $value;
+    }
+
+    /**
      * @return belongsToMany
      */
     public function jobs(): belongsToMany
