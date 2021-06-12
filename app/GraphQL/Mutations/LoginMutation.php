@@ -13,7 +13,7 @@ use Rebing\GraphQL\Support\Mutation;
 class LoginMutation extends Mutation
 {
     protected $attributes = [
-        'name' => 'Login',
+        'name' => 'login',
         'description' => 'Log the user in by email',
     ];
 
