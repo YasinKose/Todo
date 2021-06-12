@@ -104,8 +104,8 @@ return [
             'query' => [
                 \App\GraphQL\Queries\JobsQuery::class,
                 \App\GraphQL\Queries\JobQuery::class,
-                \App\GraphQL\Queries\UsersQuery::class
-
+                \App\GraphQL\Queries\UsersQuery::class,
+                \App\GraphQL\Queries\MeQuery::class,
             ],
             'mutation' => [
                 \App\GraphQL\Mutations\LoginMutation::class,
@@ -119,7 +119,7 @@ return [
                 \App\GraphQL\Types\RegisterType::class,
                 \App\GraphQL\Types\JobsType::class,
                 \App\GraphQL\Types\StepsType::class,
-
+                \App\GraphQL\Types\MeType::class,
                 //Callbacks
                 \App\GraphQL\Types\LoginCallback::class
             ],
