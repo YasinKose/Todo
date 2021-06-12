@@ -8,6 +8,7 @@ use App\Models\Jobs;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
+use Illuminate\Support\Facades\Auth;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 
 class JobsQuery extends AuthorizeQueries
@@ -45,7 +46,11 @@ class JobsQuery extends AuthorizeQueries
 
         $fields = $getSelectFields();
 
-        return Jobs::with($fields->getRelations())
+        $user = Auth::id();
+        return Jobs::whereHas("users", function ($query) use ($user) {
+            $query->whereIn("user_id", [$user]);
+        })
+            ->with($fields->getRelations())
             ->select($fields->getSelect())
             ->paginate($args['limit'], ['*'], 'page', $args['page']);
     }
