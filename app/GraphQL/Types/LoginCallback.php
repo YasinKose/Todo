@@ -18,6 +18,11 @@ class LoginCallback extends GraphQLType
     public function fields(): array
     {
         return [
+            'user_id' => [
+                'type' => Type::int(),
+                'description' => "The id of the logged in user"
+            ],
+
             'access_token' => [
                 'type' => Type::nonNull(Type::string()),
                 'description' => 'Shows the name of ID',

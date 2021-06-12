@@ -45,6 +45,7 @@ class LoginMutation extends Mutation
         }
 
         return [
+            'user_id' => Auth::id(),
             'access_token' => $token,
             'token_type' => "Bearer",
             'expires_in' => 60 * 60
