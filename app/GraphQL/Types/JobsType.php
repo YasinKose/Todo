@@ -6,6 +6,7 @@ namespace App\GraphQL\Types;
 
 use App\Models\Jobs;
 use GraphQL\Type\Definition\Type;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 
 class JobsType extends GraphQLType
@@ -21,14 +22,21 @@ class JobsType extends GraphQLType
         return [
             'id' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'Id of a particular book',
+                'description' => 'Brings the id of the job',
             ],
             'name' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'The title of the book',
+                'description' => 'Brings the name of the job',
             ],
             'deadline_at' => [
                 'type' => Type::nonNull(Type::string()),
+                'description' => 'Returns the scheduled finish date of the job'
+            ],
+
+
+            'steps' => [
+                'type' => Type::listOf(GraphQL::type("Steps")),
+                'description' => 'Gets the list of steps in the job'
             ]
         ];
     }

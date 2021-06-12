@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\GraphQL\Queries;
 
 use App\Models\Jobs;
+use GraphQL\Exception\InvalidArgument;
 use GraphQL\Type\Definition\Type;
-use http\Exception\BadQueryStringException;
 use Illuminate\Support\Facades\Auth;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 
@@ -38,10 +38,10 @@ class JobQuery extends AuthorizeQueries
 
     public function resolve($root, $args)
     {
-        $jobs = Auth::user()->jobs()->find($args['id']);
+        $jobs = Auth::user()->jobs->find($args['id']);
 
         if (!$jobs) {
-            throw new BadQueryStringException("Eşleşen veri bulunamadı!");
+            throw new InvalidArgument("Eşleşen veri bulunamadı!");
         }
 
         return $jobs;
