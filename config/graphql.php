@@ -109,11 +109,14 @@ return [
             ],
             'mutation' => [
                 \App\GraphQL\Mutations\LoginMutation::class,
+                \App\GraphQL\Mutations\RegisterMutation::class,
+
                 \App\GraphQL\Mutations\CreateJobMutation::class,
                 \App\GraphQL\Mutations\CreateStepMutation::class,
             ],
             'types' => [
                 \App\GraphQL\Types\UserType::class,
+                \App\GraphQL\Types\RegisterType::class,
                 \App\GraphQL\Types\JobsType::class,
                 \App\GraphQL\Types\StepsType::class,
 
