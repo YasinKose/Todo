@@ -33,6 +33,10 @@ class JobsType extends GraphQLType
                 'description' => 'Returns the scheduled finish date of the job'
             ],
 
+            'steps_count' => [
+                'type' => Type::int(),
+                'description' => 'Returns the count of steps in the job'
+            ],
 
             'steps' => [
                 'type' => Type::listOf(GraphQL::type("Steps")),

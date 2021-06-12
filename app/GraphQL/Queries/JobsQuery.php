@@ -46,12 +46,16 @@ class JobsQuery extends AuthorizeQueries
 
         $fields = $getSelectFields();
 
+
         $user = Auth::id();
-        return Jobs::whereHas("users", function ($query) use ($user) {
+        $job = Jobs::whereHas("users", function ($query) use ($user) {
             $query->whereIn("user_id", [$user]);
-        })
-            ->with($fields->getRelations())
-            ->select($fields->getSelect())
-            ->paginate($args['limit'], ['*'], 'page', $args['page']);
+        })->with($fields->getRelations());
+
+        if (collect($fields->getSelect())->search("jobs.steps_count")) {
+            $job->withCount("steps");
+        }
+
+        return $job->paginate($args['limit'], ['*'], 'page', $args['page']);
     }
 }
