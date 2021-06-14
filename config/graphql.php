@@ -117,6 +117,7 @@ return [
 
                 \App\GraphQL\Mutations\CreateStepMutation::class,
                 \App\GraphQL\Mutations\UpdateStepMutation::class,
+                \App\GraphQL\Mutations\DeleteStepMutation::class
 
             ],
             'types' => [
