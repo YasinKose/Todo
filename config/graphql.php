@@ -117,7 +117,8 @@ return [
 
                 \App\GraphQL\Mutations\CreateStepMutation::class,
                 \App\GraphQL\Mutations\UpdateStepMutation::class,
-                \App\GraphQL\Mutations\DeleteStepMutation::class
+                \App\GraphQL\Mutations\DeleteStepMutation::class,
+                \App\GraphQL\Mutations\ProfileMutation::class
 
             ],
             'types' => [
@@ -128,7 +129,12 @@ return [
                 \App\GraphQL\Types\MeType::class,
 
                 //Callbacks
-                \App\GraphQL\Types\LoginCallback::class
+                \App\GraphQL\Types\LoginCallback::class,
+
+                \App\GraphQL\Types\ProfileType::class,
+
+                \Rebing\GraphQL\Support\UploadType::class,
+
             ],
             'middleware' => [],
             'method' => [

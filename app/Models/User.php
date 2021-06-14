@@ -21,6 +21,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'profilePicture',
         'password',
     ];
 
@@ -80,6 +81,6 @@ class User extends Authenticatable implements JWTSubject
      */
     public function jobs(): belongsToMany
     {
-        return $this->belongsToMany(Jobs::class,"jobs_users");
+        return $this->belongsToMany(Jobs::class, "jobs_users");
     }
 }
