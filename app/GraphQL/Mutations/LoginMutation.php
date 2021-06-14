@@ -33,7 +33,14 @@ class LoginMutation extends Mutation
             'password' => [
                 'name' => 'password',
                 'type' => Type::nonNull(Type::string()),
-                'rules' => ['required', 'string'],
+                'rules' => [
+                    'required',
+                    'min:10',
+                    'regex:/[a-z]/',
+                    'regex:/[A-Z]/',
+                    'regex:/[0-9]/',
+                    'regex:/[@$!%*#\?&]/',
+                ],
             ],
         ];
     }

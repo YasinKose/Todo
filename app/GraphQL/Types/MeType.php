@@ -32,7 +32,10 @@ class MeType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'Email of the user',
             ],
-
+            'profilePicture' => [
+                'type' => Type::string(),
+                'description' => 'Profile Picture of the user',
+            ],
             'created_at' => [
                 'type' => Type::string(),
                 'description' => "Created At of the user"

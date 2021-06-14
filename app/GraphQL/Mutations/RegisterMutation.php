@@ -51,8 +51,11 @@ class RegisterMutation extends Mutation
                 'type' => Type::nonNull(Type::string()),
                 'rules' => [
                     'required',
-                    'string',
-                    'min:6'
+                    'min:10',
+                    'regex:/[a-z]/',
+                    'regex:/[A-Z]/',
+                    'regex:/[0-9]/',
+                    'regex:/[@$!%*#\?&]/',
                 ],
             ],
         ];

@@ -47,7 +47,11 @@ class ProfileMutation extends AuthorizeMutation
                 'type' => Type::string(),
                 'rules' => [
                     'nullable',
-                    'min:6',
+                    'min:10',
+                    'regex:/[a-z]/',
+                    'regex:/[A-Z]/',
+                    'regex:/[0-9]/',
+                    'regex:/[@$!%*#\?&]/',
                 ],
             ],
             'current_password' => [
@@ -55,7 +59,11 @@ class ProfileMutation extends AuthorizeMutation
                 'type' => Type::string(),
                 'rules' => [
                     'required',
-                    'min:6',
+                    'min:10',
+                    'regex:/[a-z]/',
+                    'regex:/[A-Z]/',
+                    'regex:/[0-9]/',
+                    'regex:/[@$!%*#\?&]/',
                 ],
             ],
             'profilePicture' => [
