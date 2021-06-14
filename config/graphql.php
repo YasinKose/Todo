@@ -106,6 +106,7 @@ return [
                 \App\GraphQL\Queries\JobQuery::class,
                 \App\GraphQL\Queries\UsersQuery::class,
                 \App\GraphQL\Queries\MeQuery::class,
+                \App\GraphQL\Queries\LogoutQuery::class,
             ],
             'mutation' => [
                 \App\GraphQL\Mutations\LoginMutation::class,
@@ -115,7 +116,7 @@ return [
                 \App\GraphQL\Mutations\UpdateJobMutation::class,
 
                 \App\GraphQL\Mutations\CreateStepMutation::class,
-                \App\GraphQL\Mutations\UpdateStepMutation::class
+                \App\GraphQL\Mutations\UpdateStepMutation::class,
 
             ],
             'types' => [
