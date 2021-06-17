@@ -18,7 +18,7 @@ class JobsSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         User::all()->each(function ($user) use ($faker) {
-            foreach (range(1, rand(5, 20)) as $i) {
+            foreach (range(1, rand(5, 40)) as $i) {
                 $user->jobs()->save(
                     new Jobs([
                         'name' => $faker->sentence,
