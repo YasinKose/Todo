@@ -8,6 +8,7 @@ use App\Models\User;
 use Closure;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
+use Illuminate\Support\Facades\Auth;
 use Rebing\GraphQL\Support\Facades\GraphQL;
 use Rebing\GraphQL\Support\SelectFields;
 
@@ -28,6 +29,7 @@ class UsersQuery extends AuthorizeQueries
         $fields = $getSelectFields();
 
         return User::query()
+            ->whereNotIn("id", [Auth::id()])
             ->select($fields->getSelect())
             ->get();
 
