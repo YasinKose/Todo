@@ -55,8 +55,8 @@ class ProfileMutation extends AuthorizeMutation
                 ],
             ],
             'current_password' => [
-                'name' => 'password',
-                'type' => Type::string(),
+                'name' => 'current_password',
+                'type' => Type::nonNull(Type::string()),
                 'rules' => [
                     'required',
                     'min:10',
