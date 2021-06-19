@@ -53,7 +53,6 @@ class DeleteJobMutation extends Mutation
         }
         $job->users()->sync([]);
         $job->steps()->delete();
-        $job->delete();
-
+        return $job->delete();
     }
 }
