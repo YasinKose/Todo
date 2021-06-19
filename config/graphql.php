@@ -114,6 +114,7 @@ return [
 
                 \App\GraphQL\Mutations\CreateJobMutation::class,
                 \App\GraphQL\Mutations\UpdateJobMutation::class,
+                \App\GraphQL\Mutations\DeleteJobMutation::class,
 
                 \App\GraphQL\Mutations\CreateStepMutation::class,
                 \App\GraphQL\Mutations\UpdateStepMutation::class,
