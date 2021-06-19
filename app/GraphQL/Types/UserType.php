@@ -32,6 +32,10 @@ class UserType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'Email of the user',
             ],
+            'profilePicture' => [
+                'type' => Type::string(),
+                'description' => 'Profile Picture of the user',
+            ],
         ];
     }
 }
