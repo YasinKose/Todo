@@ -41,6 +41,11 @@ class JobsType extends GraphQLType
             'steps' => [
                 'type' => Type::listOf(GraphQL::type("Steps")),
                 'description' => 'Gets the list of steps in the job'
+            ],
+
+            'users' => [
+                'type' => Type::listOf(GraphQL::type("User")),
+                'description' => 'Gets the list of users in the job'
             ]
         ];
     }
