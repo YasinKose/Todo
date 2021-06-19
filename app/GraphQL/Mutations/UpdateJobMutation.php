@@ -61,25 +61,18 @@ class UpdateJobMutation extends AuthorizeMutation
             throw new InvalidArgument("Erişiminiz bulunmuyor!");
         }
 
-        if (!empty($args['users'])) {
-            $mUser = $job->users->pluck("id")->toArray();
+        $args['users'][] = Auth::id();
+        $args['users'] = array_unique($args['users']);
 
-            if (!empty($mUser)) {
-                $args['users'] = array_merge($args['users'], $mUser);
+        $users = [];
+        foreach ($args['users'] as $index => $user) {
+            if (DB::table("users")->where("id", $user)->first()) {
+                $users[] = $user;
             }
-
-            $args['users'] = array_unique($args['users']);
-
-            $users = [];
-            foreach ($args['users'] as $index => $user) {
-                if (DB::table("users")->where("id", $user)->first()) {
-                    $users[] = $user;
-                }
-            }
-            unset($args['users']);
-
-            $job->users()->sync($users);
         }
+        unset($args['users']);
+
+        $job->users()->sync($users);
 
         $job->update($args);
 
